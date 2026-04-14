@@ -1,0 +1,175 @@
+@use './tokens' as *;
+
+.container {
+  width: min(1160px, 100% - #{$space-4});
+  margin-inline: auto;
+}
+
+.site-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid $color-border;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+    padding: $space-2 0;
+  }
+}
+
+.site-logo {
+  display: block;
+  object-fit: contain;
+
+  &--large {
+    height: 88px;
+    width: auto;
+  }
+
+  &--small {
+    height: 56px;
+    width: auto;
+  }
+}
+
+.site-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav {
+  display: flex;
+  gap: $space-1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  a {
+    padding: 10px 12px;
+    border-radius: $radius-sm;
+    font-weight: 600;
+    color: $color-text;
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-accent;
+      background: $color-surface-soft;
+      outline: none;
+    }
+
+    &.active {
+      color: $color-accent;
+      background: rgba(208, 0, 11, 0.08);
+    }
+  }
+}
+
+main {
+  flex: 1;
+  display: grid;
+  align-content: start;
+}
+
+.page-section {
+  margin-top: $space-5;
+  margin-bottom: $space-5;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+  padding: $space-4;
+  display: grid;
+  gap: $space-2;
+
+  &--hero {
+    margin-top: $space-6;
+    text-align: center;
+    justify-items: center;
+
+    h1 {
+      color: $color-accent;
+    }
+
+    p {
+      max-width: 64ch;
+    }
+  }
+}
+
+.button-row {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  padding: 12px 18px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &--primary {
+    background: $color-accent;
+    color: #ffffff;
+
+    &:hover,
+    &:focus-visible {
+      background: $color-accent-strong;
+      color: #ffffff;
+    }
+  }
+
+  &--secondary {
+    border-color: $color-border;
+    background: #ffffff;
+    color: $color-text;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-accent;
+      border-color: $color-accent;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .site-logo--large {
+    height: 72px;
+  }
+
+  .page-section {
+    margin-top: $space-4;
+    margin-bottom: $space-4;
+    padding: $space-3;
+  }
+}
