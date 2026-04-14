@@ -1,4 +1,4 @@
-// import './OmOs.scss'
+import './OmOs.scss'
 
 function OmOsPage() {
   return (

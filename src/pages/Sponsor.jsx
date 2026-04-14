@@ -1,4 +1,4 @@
-// import './Sponsor.scss'
+import './Sponsor.scss'
 
 function SponsorPage() {
   return (

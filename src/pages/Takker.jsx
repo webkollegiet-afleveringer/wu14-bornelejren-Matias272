@@ -1,4 +1,4 @@
-// import './Takker.scss'
+import './Takker.scss'
 
 function TakkerPage() {
   return (

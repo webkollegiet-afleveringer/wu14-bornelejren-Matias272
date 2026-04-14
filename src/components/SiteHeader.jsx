@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import campLogo from '../../Billeder/Logo/logo.jfif'
+import campLogo from '../../Billeder/Logo/logo.svg'
 import './SiteHeader.scss'
 
 function SiteHeader() {
