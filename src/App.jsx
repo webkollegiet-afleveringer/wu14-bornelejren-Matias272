@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import SiteHeader from './components/SiteHeader.jsx'
 import ForsidePage from './pages/Forside.jsx'
 import OmOsPage from './pages/OmOs.jsx'

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-// import './Forside.scss'
+import './Forside.scss'
 
 function ForsidePage() {
   return (

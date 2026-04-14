@@ -20,14 +20,7 @@
 .site-logo {
   display: block;
   object-fit: contain;
-}
-
-.site-logo--large {
-  height: 88px;
-  width: auto;
-}
-
-.site-logo--small {
+  image-rendering: -webkit-optimize-contrast;
   height: 56px;
   width: auto;
 }
@@ -73,9 +66,5 @@
   .site-nav {
     width: 100%;
     justify-content: flex-start;
-  }
-
-  .site-logo--large {
-    height: 72px;
   }
 }
