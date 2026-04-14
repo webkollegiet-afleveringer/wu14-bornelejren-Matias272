@@ -1,0 +1,81 @@
+@use '../styles/variables' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid $color-border;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-2 0;
+}
+
+.site-logo {
+  display: block;
+  object-fit: contain;
+}
+
+.site-logo--large {
+  height: 88px;
+  width: auto;
+}
+
+.site-logo--small {
+  height: 56px;
+  width: auto;
+}
+
+.site-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav {
+  display: flex;
+  gap: $space-1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.site-nav a {
+  padding: 10px 12px;
+  border-radius: $radius-sm;
+  font-weight: 600;
+  color: $color-text;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: $color-accent;
+  background: $color-surface-soft;
+  outline: none;
+}
+
+.site-nav a.active {
+  color: $color-accent;
+  background: rgba(208, 0, 11, 0.08);
+}
+
+@media (max-width: 900px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .site-logo--large {
+    height: 72px;
+  }
+}

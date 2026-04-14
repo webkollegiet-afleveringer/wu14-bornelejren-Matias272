@@ -1,0 +1,22 @@
+@use '../styles/variables' as *;
+
+.forside-page {
+  margin-top: $space-6;
+  text-align: center;
+  justify-items: center;
+}
+
+.forside-page h1 {
+  color: $color-accent;
+}
+
+.forside-page p {
+  max-width: 64ch;
+}
+
+.button-row {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+  justify-content: center;
+}
