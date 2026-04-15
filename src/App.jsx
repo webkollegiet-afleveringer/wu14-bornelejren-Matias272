@@ -1,5 +1,6 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import SiteHeader from './components/SiteHeader.jsx'
+import SiteFooter from './components/SiteFooter.jsx'
 import ForsidePage from './pages/Forside.jsx'
 import OmOsPage from './pages/OmOs.jsx'
 import SponsorPage from './pages/Sponsor.jsx'
@@ -12,25 +13,26 @@ function RootLayout() {
       <main className="site-main">
         <Outlet />
       </main>
+      <SiteFooter />
     </div>
   )
 }
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      { index: true, element: <ForsidePage /> },
-      { path: 'om-os', element: <OmOsPage /> },
-      { path: 'tilmeld-som-sponsor', element: <SponsorPage /> },
-      { path: 'bornelejren-takker', element: <TakkerPage /> },
-    ],
-  },
-])
-
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<ForsidePage />} />
+          <Route path="om-os" element={<OmOsPage />} />
+          <Route path="tilmeld" element={<SponsorPage />} />
+          <Route path="tak" element={<TakkerPage />} />
+          <Route path="tilmeld-som-sponsor" element={<Navigate to="/tilmeld" replace />} />
+          <Route path="bornelejren-takker" element={<Navigate to="/tak" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

@@ -1,5 +1,39 @@
 @use '../styles/variables' as *;
 
 .takker-page {
+  display: grid;
+  gap: $space-5;
+}
+
+.thanks-intro {
+  display: grid;
   gap: $space-2;
+}
+
+.sponsor-cards {
+  display: grid;
+  gap: $space-2;
+
+  @include up($bp-md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include up($bp-lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sponsor-card {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: $space-2;
+  align-items: center;
+}
+
+.sponsor-card__mark {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid $color-border;
+  background: $color-bg-alt;
 }

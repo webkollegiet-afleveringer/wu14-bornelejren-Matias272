@@ -1,0 +1,63 @@
+@use '../styles/variables' as *;
+
+.site-footer {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: $space-4;
+  padding-block: 3rem;
+}
+
+.site-footer__brand,
+.site-footer__links,
+.site-footer__contact {
+  display: grid;
+  gap: $space-2;
+}
+
+.site-footer__logo {
+  display: block;
+  width: auto;
+  height: 56px;
+}
+
+.site-footer__title {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.site-footer__brand p,
+.site-footer__contact p,
+.site-footer__bottom p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.site-footer__links a {
+  color: rgba(255, 255, 255, 0.88);
+  width: fit-content;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: #ffffff;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-block: 1rem;
+}
+
+.site-footer__bottom .container {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: $bp-md) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+  }
+}

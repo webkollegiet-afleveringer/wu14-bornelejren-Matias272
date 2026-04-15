@@ -5,24 +5,21 @@
   top: 0;
   z-index: 10;
   border-bottom: 1px solid $color-border;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .site-header__inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: $space-3;
-  padding: $space-2 0;
+  padding-block: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .site-logo {
-padding: 5px;
-//   background-color: $color-accent;
   display: block;
-  object-fit: contain;
-  image-rendering: -webkit-optimize-contrast;
   height: 56px;
   width: auto;
 }
@@ -30,6 +27,27 @@ padding: 5px;
 .site-logo-link {
   display: inline-flex;
   align-items: center;
+}
+
+.site-header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: auto;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: #ffffff;
+}
+
+.site-header__toggle-line {
+  width: 1.25rem;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 999px;
+  background: $color-text;
 }
 
 .site-nav {
@@ -41,34 +59,47 @@ padding: 5px;
 
 .site-nav a {
   padding: 10px 12px;
-  border-radius: $radius-sm;
   font-weight: 600;
   color: $color-text;
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: $color-accent;
-  background: $color-surface-soft;
+  color: $color-primary;
   outline: none;
 }
 
 .site-nav a.active {
-  color: $color-accent;
-  background: rgba(208, 0, 11, 0.08);
+  color: $color-primary;
+  border-bottom-color: $color-primary;
 }
 
-@media (max-width: 900px) {
-  .site-header__inner {
-    flex-direction: column;
-    align-items: flex-start;
+.site-nav a:focus-visible {
+  border-bottom-color: $color-primary;
+}
+
+@media (max-width: $bp-md) {
+  .site-header__toggle {
+    display: inline-flex;
   }
 
   .site-nav {
+    display: none;
     width: 100%;
-    justify-content: flex-start;
+    order: 3;
+    padding: 0.75rem 0 0.25rem;
+    border-top: 1px solid $color-border;
+  }
+
+  .site-nav--open {
+    display: grid;
+    width: 100%;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding-inline: 0;
   }
 }
