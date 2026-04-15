@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { z } from 'zod'
 import './Sponsor.scss'
 
 const sponsorTiers = [
@@ -28,6 +29,15 @@ const initialFormState = {
   amount: '',
 }
 
+const sponsorSchema = z.object({
+  supportType: z.enum(['Børnesponsorat', 'Lejrsponsorat', 'Diplomsponsor']),
+  companyName: z.string().trim().min(1, 'Firmanavn er påkrævet.'),
+  email: z.string().trim().min(1, 'Email er påkrævet.').email('Indtast en gyldig email.'),
+  address: z.string().trim().min(1, 'Adresse er påkrævet.'),
+  phone: z.string().trim().min(1, 'Telefon er påkrævet.'),
+  amount: z.coerce.number().min(1000, 'Beløbet skal være mindst 1000 kr.'),
+})
+
 function SponsorPage() {
   const [formData, setFormData] = useState(initialFormState)
   const [errors, setErrors] = useState({})
@@ -47,39 +57,21 @@ function SponsorPage() {
   }
 
   const validateForm = () => {
-    const nextErrors = {}
+    const result = sponsorSchema.safeParse(formData)
 
-    if (!formData.supportType) {
-      nextErrors.supportType = 'Vælg en støttetype.'
+    if (result.success) {
+      return {}
     }
 
-    if (!formData.companyName.trim()) {
-      nextErrors.companyName = 'Firmanavn er påkrævet.'
-    }
+    return result.error.issues.reduce((collectedErrors, issue) => {
+      const fieldName = issue.path[0]
 
-    if (!formData.email.trim()) {
-      nextErrors.email = 'Email er påkrævet.'
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      nextErrors.email = 'Indtast en gyldig email.'
-    }
+      if (typeof fieldName === 'string' && !collectedErrors[fieldName]) {
+        collectedErrors[fieldName] = issue.message
+      }
 
-    if (!formData.address.trim()) {
-      nextErrors.address = 'Adresse er påkrævet.'
-    }
-
-    if (!formData.phone.trim()) {
-      nextErrors.phone = 'Telefon er påkrævet.'
-    }
-
-    const amount = Number(formData.amount)
-
-    if (!formData.amount) {
-      nextErrors.amount = 'Beløb er påkrævet.'
-    } else if (Number.isNaN(amount) || amount < 1000) {
-      nextErrors.amount = 'Beløbet skal være mindst 1000 kr.'
-    }
-
-    return nextErrors
+      return collectedErrors
+    }, {})
   }
 
   const handleSubmit = (event) => {
@@ -110,7 +102,7 @@ function SponsorPage() {
           </p>
         </div>
       </section>
-
+ 
       <section className="section section--soft">
         <div className="container tier-grid">
           {sponsorTiers.map((tier) => (

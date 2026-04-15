@@ -1,4 +1,5 @@
 import './OmOs.scss'
+import Hero from "../../Billeder/Fotos/hero.jpg";
 
 function OmOsPage() {
   return (
@@ -6,7 +7,7 @@ function OmOsPage() {
       <section className="page-hero">
         <img
           className="page-hero__image"
-          src="/images/hero.jpg"
+          src={Hero}
           alt="Børnelejren på Langeland i naturrige omgivelser"
         />
         <div className="page-hero__overlay" />
