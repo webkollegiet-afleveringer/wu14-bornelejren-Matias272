@@ -7,11 +7,7 @@ function ForsidePage() {
   return (
     <div className="forside-page">
       <section className="hero">
-        <img
-          className="hero__image"
-          src={Hero}
-          alt="Natur og grønt landskab ved lejren"
-        />
+        
         <div className="hero__overlay" />
         <div className="container hero__content">
           <div className="stack">
