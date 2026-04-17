@@ -1,0 +1,74 @@
+@use '../styles/variables' as *;
+
+.forside-page {
+  display: grid;
+  gap: 0;
+}
+
+.hero {
+  background-image: url(../../Billeder/Fotos/hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 77vh;
+  color: #ffffff;
+}
+
+.hero__media {
+  position: sticky;
+  top: 0;
+  height: 86vh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+}
+
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding-block: 4rem;
+}
+
+.hero__content .stack {
+  max-width: 42rem;
+}
+
+.hero__content h1,
+.hero__content p {
+  color: #ffffff;
+}
+
+.home-intro {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+.home-intro__content {
+  display: grid;
+  gap: 2rem;
+}
+
+.home-intro__text {
+  display: grid;
+  gap: $space-2;
+}
+
+.home-intro__aside {
+  align-self: start;
+}
+
+@media (min-width: $bp-lg) {
+  .home-intro__content {
+    grid-template-columns: 1.4fr 0.9fr;
+    align-items: start;
+  }
+}

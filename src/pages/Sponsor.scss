@@ -1,0 +1,36 @@
+@use '../styles/variables' as *;
+
+.sponsor-page {
+  display: grid;
+  gap: $space-5;
+}
+
+.sponsor-hero {
+  display: grid;
+  gap: $space-2;
+}
+
+.tier-grid {
+  display: grid;
+  gap: $space-2;
+
+  @include up($bp-lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sponsor-form {
+  display: grid;
+  gap: $space-3;
+  padding: $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: #ffffff;
+}
+
+.sponsor-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  align-items: center;
+}
