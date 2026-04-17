@@ -1,0 +1,60 @@
+@use './variables' as *;
+
+.form-grid {
+  display: grid;
+  gap: $space-2;
+}
+
+.form-grid--two-column {
+  @include up($bp-md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.form-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: $color-text;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: #ffffff;
+  color: $color-text;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: $color-primary;
+  box-shadow: 0 0 0 3px rgba(208, 0, 11, 0.12);
+}
+
+.form-field--invalid input,
+.form-field--invalid select,
+.form-field--invalid textarea {
+  border-color: $color-primary;
+}
+
+.form-error {
+  color: $color-primary;
+}
+
+.form-success {
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0, 128, 64, 0.22);
+  border-radius: $radius-md;
+  background: rgba(0, 128, 64, 0.06);
+  color: #175c31;
+}

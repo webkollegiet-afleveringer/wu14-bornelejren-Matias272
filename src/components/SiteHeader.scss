@@ -1,0 +1,105 @@
+@use "../styles/variables" as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid $color-border;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.site-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding-block: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.site-logo {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+.site-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: auto;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: #ffffff;
+}
+
+.site-header__toggle-line {
+  width: 1.25rem;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 999px;
+  background: $color-text;
+}
+
+.site-nav {
+  display: flex;
+  gap: $space-1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.site-nav a {
+  padding: 10px 12px;
+  font-weight: 600;
+  color: $color-text;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: $color-primary;
+  outline: none;
+}
+
+.site-nav a.active {
+  color: $color-primary;
+  border-bottom-color: $color-primary;
+}
+
+.site-nav a:focus-visible {
+  border-bottom-color: $color-primary;
+}
+
+@media (max-width: $bp-md) {
+  .site-header__toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    order: 3;
+    padding: 0.75rem 0 0.25rem;
+    border-top: 1px solid $color-border;
+  }
+
+  .site-nav--open {
+    display: grid;
+    width: 100%;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding-inline: 0;
+  }
+}

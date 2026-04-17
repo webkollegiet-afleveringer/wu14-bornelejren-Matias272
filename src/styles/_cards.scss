@@ -1,0 +1,44 @@
+@use './variables' as *;
+
+.card,
+.stat-card,
+.tier-card,
+.sponsor-card {
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: #ffffff;
+}
+
+.card,
+.stat-card,
+.tier-card {
+  padding: $space-3;
+}
+
+.stat-card ul,
+.tier-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stat-card {
+  background: $color-bg-alt;
+}
+
+.tier-card {
+  display: grid;
+  gap: $space-2;
+}
+
+.tier-card__price {
+  font-family: $font-heading;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.sponsor-card {
+  padding: $space-2;
+}
