@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react'
 import './Takker.scss'
 
-const sponsors = ['Virksomhed A', 'Virksomhed B', 'Virksomhed C', 'Virksomhed D', 'Virksomhed E', 'Virksomhed F']
+const SPONSORS_STORAGE_KEY = 'bornelejrenSponsors'
 
-function TakkerPage() {
+export default function TakkerPage() {
+  const [sponsors, setSponsors] = useState([])
+
+  useEffect(() => {
+    const sponsorsRaw = localStorage.getItem(SPONSORS_STORAGE_KEY)
+    const storedSponsors = sponsorsRaw ? JSON.parse(sponsorsRaw) : []
+
+    if (Array.isArray(storedSponsors)) {
+      setSponsors(storedSponsors)
+    }
+  }, [])
+
   return (
     <div className="takker-page">
       <section className="section">
@@ -20,19 +32,30 @@ function TakkerPage() {
 
       <section className="section section--soft">
         <div className="container sponsor-cards">
-          {sponsors.map((sponsorName) => (
-            <article className="sponsor-card" key={sponsorName}>
+          {sponsors.length > 0 ? (
+            sponsors.map((sponsor, index) => (
+              <article className="sponsor-card" key={`${sponsor.companyName}-${index}`}>
+                <div className="sponsor-card__mark" aria-hidden="true" />
+                <div>
+                  <h3>{sponsor.companyName}</h3>
+                  <p>
+                    {sponsor.supportType} - {Number(sponsor.amount).toLocaleString('da-DK')} kr.
+                  </p>
+                </div>
+              </article>
+            ))
+          ) : (
+            <article className="sponsor-card">
               <div className="sponsor-card__mark" aria-hidden="true" />
               <div>
-                <h3>{sponsorName}</h3>
-                <p>Plads til logo og yderligere oplysninger.</p>
+                <h3>Ingen sponsorer registreret endnu</h3>
+                <p>De nyeste sponsorregistreringer vil blive vist her.</p>
               </div>
             </article>
-          ))}
+          )}
         </div>
       </section>
     </div>
   )
 }
 
-export default TakkerPage

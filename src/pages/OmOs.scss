@@ -12,13 +12,13 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  min-height: 55vh;
+  min-height: 77vh;
 }
 
 .page-hero__media {
    position: sticky;
   top: 0;
-  height: 55vh;
+  height: 77vh;
   display: grid;
   align-items: end;
   overflow: hidden;
@@ -128,11 +128,11 @@
 
 @media (min-width: $bp-lg) {
   .page-hero {
-    min-height: 55vh;
+    min-height: 108vh;
   }
 
   .page-hero__media {
-    height: 55vh;
+    height: 78vh;
   }
 
   .about-section {
